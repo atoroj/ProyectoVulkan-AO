@@ -128,12 +128,6 @@ void CABalljoint::ComputeMatrix()
 	}
 }
 
-
-void CABalljoint::setMatrix(glm::mat4 matrix) {
-	matrizpadre = matrix;
-	ComputeMatrix();
-}
-
 //
 // FUNCIÓN: CABalljoint::createBuffers(CAVulkanState* vulkan)
 //
@@ -160,9 +154,6 @@ void CABalljoint::initialize(CAVulkanState* vulkan)
 	bone = new CACylinder(2, 10, 0.05f, length / 2);
 	bone->initialize(vulkan);
 	bone->setMaterial(boneMat);
-	for (int i = 0; i < hijas.size(); i++) {
-		hijas[i]->initialize(vulkan);
-	}
 	ComputeMatrix();
 }
 

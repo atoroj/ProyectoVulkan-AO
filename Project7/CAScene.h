@@ -16,6 +16,7 @@ public:
 	Animation* getAnimation();
 
 private:
+	float duration = 0.0f;
 	CAFigure* ground;
 	CASkeleton* esqueleto;
 	Animation* animacion;

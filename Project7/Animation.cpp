@@ -10,7 +10,9 @@ Animation::~Animation(){
 }
 
 void Animation::addKeyFrame(Keyframe kf){
-	this->vKeyframe.push_back(kf);
+	this->vKeyframe.push_back({
+		kf.time, kf.direction
+		});
 }
 
 void Animation::animation(float time){
@@ -22,7 +24,7 @@ void Animation::animation(float time){
 
 			for (int j = 0; j < vKeyframe[i].direction.size(); j++){
 				glm::vec2 pos = ini[j] + t * (fin[j] - ini[j]);
-				if (j == 0) {
+				if (j == 0){
 					interpolationPose("leg_l", pos);
 				}
 				else if (j == 1){
@@ -39,38 +41,62 @@ void Animation::animation(float time){
 	}
 }
 void Animation::interpolationPose(std::string name, glm::vec2 vector){
-	std::vector<CABalljoint*> articulaciones = this->skeleton->getHijas();
-	for (int i = 0; i < articulaciones.size(); i++){
-		if (articulaciones[i]->getName() == name) {
-			articulaciones[i]->setPose(vector.x, vector.y, 0.0f);
+	int num = this->skeleton->getHijas().size();
+	for (int i = 0; i < num; i++){
+		CABalljoint* balljoint = this->skeleton->getHijas()[i];
+		if (balljoint->getName() == name) {
+			balljoint->setPose(vector.x, vector.y, 0.0f);
 			break;
 		}
-		interpolationPose2(name, articulaciones[i], vector);
+		interpolationPose2(name, balljoint, vector);
 	}
 }
 
 void Animation::interpolationPose2(std::string name, CABalljoint* balljoint, glm::vec2 vector){
-	std::vector<CABalljoint*> articulaciones = balljoint->getHijas();
-	for (int i = 0; i < articulaciones.size(); i++) {
-		if (articulaciones[i]->getName() == name) {
-			articulaciones[i]->setPose(vector.x, vector.y, 0.0f);
+	int num = balljoint->getHijas().size();
+	for (int i = 0; i < num; i++) {
+		CABalljoint* articulacion = balljoint->getHijas()[i];
+		if (articulacion->getName() == name) {
+			articulacion->setPose(vector.x, vector.y, 0.0f);
+			return;
 		}
-		interpolationPose2(name, articulaciones[i], vector);
+		interpolationPose2(name, articulacion, vector);
 	}
 }
 
 void Animation::createAnimation(){
-	Keyframe kf;
+	Keyframe kf = {};
 
-	std::vector<glm::vec2>  direction = {
+	kf.direction = {
 		glm::vec2(0.0f, 0.0f),
-		glm::vec2(90.0f, 0.0f),
 		glm::vec2(0.0f, 0.0f),
-		glm::vec2(-90.0f, 0.0f)
+		glm::vec2(0.0f, 0.0f),
+		glm::vec2(0.0f, 0.0f)
 	};
 
-	kf.direction = direction;
+	kf.time = 0.0f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(0.0f, 0.0f),
+		glm::vec2(-90.0f, 0.0f),
+		glm::vec2(0.0f, 0.0f),
+		glm::vec2(90.0f, 0.0f)
+	};
+
 	kf.time = 0.7f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(30.0f, 70.0f),
+		glm::vec2(-90.0f, 0.0f),
+		glm::vec2(90.0f, 0.0f),
+		glm::vec2(0.0f, 0.0f)
+	};
+
+	kf.time = 1.4f;
 
 	this->addKeyFrame(kf);
 }

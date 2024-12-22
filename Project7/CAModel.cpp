@@ -130,10 +130,6 @@ void CAModel::key_pressed(int key)
 	case GLFW_KEY_L:
 		camera->turnRight();
 		break;
-	case GLFW_KEY_T:
-		this->scene->getAnimation()->animation(this->time);
-		this->time += 0.05f;
-		break;
 	}
 }
 

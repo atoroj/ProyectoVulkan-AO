@@ -18,7 +18,6 @@ private:
 	glm::vec3 dir;
 	glm::vec3 up;
 	glm::vec3 right;
-	glm::mat4 matrizpadre;
 	GLfloat angles[3];
 	CASphere* joint;
 	CACylinder* bone;

@@ -85,6 +85,10 @@ void CAScene::addCommands(CAVulkanState* vulkan, VkCommandBuffer commandBuffer, 
 //
 void CAScene::update(CAVulkanState* vulkan, glm::mat4 view, glm::mat4 projection)
 {
+	this->duration += 0.01f;
+	//glm::vec3 move = glm::vec3(0.0f, 0.0f, 0.005f);
+	animacion->animation(this->duration);
+	//esqueleto->translate(move);
 	ground->updateUniformBuffers(vulkan, view, projection);
 	esqueleto->updateUniformBuffers(vulkan, view, projection);
 }
