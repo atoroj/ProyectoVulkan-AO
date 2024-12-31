@@ -130,6 +130,19 @@ void CAModel::key_pressed(int key)
 	case GLFW_KEY_L:
 		camera->turnRight();
 		break;
+	case GLFW_KEY_SPACE: // para reset de animacion
+		scene->setDuration(0.0f);
+		
+		break;
+	case GLFW_KEY_1: // para retroceder animacion
+		scene->setIncremento(-0.02f);
+		break;
+	case GLFW_KEY_2: // para pausar
+		scene->setIncremento(0.0f);
+		break;
+	case GLFW_KEY_3: // para avanzar animacion
+		scene->setIncremento(0.02f);
+		break;
 	}
 }
 

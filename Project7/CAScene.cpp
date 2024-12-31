@@ -85,15 +85,36 @@ void CAScene::addCommands(CAVulkanState* vulkan, VkCommandBuffer commandBuffer, 
 //
 void CAScene::update(CAVulkanState* vulkan, glm::mat4 view, glm::mat4 projection)
 {
-	this->duration += 0.01f;
-	//glm::vec3 move = glm::vec3(0.0f, 0.0f, 0.005f);
+	this->duration += this->incremento;
+	glm::vec3 move = glm::vec3(0.0f, 0.0f, this->incremento);
 	animacion->animation(this->duration);
-	//esqueleto->translate(move);
+	esqueleto->translate(move);
 	ground->updateUniformBuffers(vulkan, view, projection);
 	esqueleto->updateUniformBuffers(vulkan, view, projection);
+	if (6.00f < this->duration) {
+		this->duration = 0.0f;
+		esqueleto->translate(glm::vec3(0.0f, 0.0f, -5.6f));
+	}
 }
 
 Animation* CAScene::getAnimation()
 {
 	return this->animacion;
 }
+
+void CAScene::setDuration(float d)
+{
+	this->duration = d;
+}
+
+void CAScene::setMovement(float m)
+{
+	this->movement = m;
+}
+
+void CAScene::setIncremento(float i)
+{
+	this->incremento = i;
+}
+
+

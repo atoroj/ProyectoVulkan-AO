@@ -68,10 +68,10 @@ void Animation::createAnimation(){
 	Keyframe kf = {};
 
 	kf.direction = {
-		glm::vec2(0.0f, 0.0f),
-		glm::vec2(0.0f, 0.0f),
-		glm::vec2(0.0f, 0.0f),
-		glm::vec2(0.0f, 0.0f)
+		glm::vec2(0.0f, 0.0f), //leg_l
+		glm::vec2(0.0f, 0.0f), //leg_r
+		glm::vec2(0.0f, 0.0f), //knee_l
+		glm::vec2(0.0f, 0.0f) //knee_r
 	};
 
 	kf.time = 0.0f;
@@ -79,10 +79,10 @@ void Animation::createAnimation(){
 	this->addKeyFrame(kf);
 
 	kf.direction = {
-		glm::vec2(0.0f, 0.0f),
-		glm::vec2(-90.0f, 0.0f),
-		glm::vec2(0.0f, 0.0f),
-		glm::vec2(90.0f, 0.0f)
+		glm::vec2(0.0f, 0.0f), //leg_l
+		glm::vec2(-90.0f, 0.0f), //leg_r
+		glm::vec2(0.0f, 0.0f), //knee_l
+		glm::vec2(90.0f, 0.0f) //knee_r
 	};
 
 	kf.time = 0.7f;
@@ -90,13 +90,79 @@ void Animation::createAnimation(){
 	this->addKeyFrame(kf);
 
 	kf.direction = {
-		glm::vec2(30.0f, 70.0f),
-		glm::vec2(-90.0f, 0.0f),
-		glm::vec2(90.0f, 0.0f),
-		glm::vec2(0.0f, 0.0f)
+		glm::vec2(30.0f, 70.0f), //leg_l
+		glm::vec2(-90.0f, 0.0f), //leg_r
+		glm::vec2(90.0f, 0.0f), //knee_l
+		glm::vec2(0.0f, 0.0f) //knee_r
 	};
 
 	kf.time = 1.4f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(30.0f, 90.0f), //leg_l
+		glm::vec2(-70.0f, 0.0f), //leg_r
+		glm::vec2(90.0f, 0.0f), //knee_l
+		glm::vec2(0.0f, 0.0f) //knee_r
+	};
+
+	kf.time = 2.1f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(40.0f, 40.0f), //leg_l
+		glm::vec2(-50.0f, 0.0f), //leg_r
+		glm::vec2(70.0f, 0.0f), //knee_l
+		glm::vec2(30.0f, 0.0f) //knee_r
+	};
+
+	kf.time = 2.8f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(0.0f, 0.0f), //leg_l
+		glm::vec2(-30.0f, 0.0f), //leg_r
+		glm::vec2(70.0f, 0.0f), //knee_l
+		glm::vec2(15.0f, 0.0f) //knee_r
+	};
+
+	kf.time = 3.5f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(-70.0f, 0.0f), //leg_l
+		glm::vec2(-30.0f, 0.0f), //leg_r
+		glm::vec2(40.0f, 0.0f), //knee_l
+		glm::vec2(15.0f, 0.0f) //knee_r
+	};
+
+	kf.time = 4.2f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(-50.0f, 0.0f), //leg_l
+		glm::vec2(0.0f, 0.0f), //leg_r
+		glm::vec2(40.0f, 0.0f), //knee_l
+		glm::vec2(0.0f, 0.0f) //knee_r
+	};
+
+	kf.time = 4.9f;
+
+	this->addKeyFrame(kf);
+
+	kf.direction = {
+		glm::vec2(0.0f, 0.0f), //leg_l
+		glm::vec2(0.0f, 0.0f), //leg_r
+		glm::vec2(0.0f, 0.0f), //knee_l
+		glm::vec2(0.0f, 0.0f) //knee_r
+	};
+
+	kf.time = 5.6f;
 
 	this->addKeyFrame(kf);
 }

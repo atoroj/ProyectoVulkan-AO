@@ -14,9 +14,15 @@ public:
 	void addCommands(CAVulkanState* vulkan, VkCommandBuffer commandBuffer, int index);
 	void update(CAVulkanState* vulkan, glm::mat4 view, glm::mat4 projection);
 	Animation* getAnimation();
+	void setDuration(float d);
+	void setMovement(float m);
+	void setIncremento(float i);
+	
 
 private:
 	float duration = 0.0f;
+	float movement = 0.0f;
+	float incremento = 0.02f;
 	CAFigure* ground;
 	CASkeleton* esqueleto;
 	Animation* animacion;
